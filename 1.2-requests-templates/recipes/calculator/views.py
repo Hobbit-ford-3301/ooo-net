@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import requests
 
 
 def hello_page(request):
@@ -13,22 +12,26 @@ def dish(request, dish_name):
 
     recipes = {
         'omelette': {
-            'яйца, шт': 2*servings,
-            'молоко, л': format(0.1*servings, ".1g"),
-            'соль, ч.л.': format(0.5*servings, ".1g"),
+            'яйца, шт': 2,
+            'молоко, л': 0.1,
+            'соль, ч.л.': 0.5,
         },
         'pasta': {
-            'макароны, г': format(0.3*servings, ".1g"),
-            'сыр, г': format(0.05*servings, ".1g"),
+            'макароны, г': 0.3,
+            'сыр, г': 0.05,
         },
         'buter': {
-            'хлеб, ломтик': 1*servings,
-            'колбаса, ломтик': 1*servings,
-            'сыр, ломтик': 1*servings,
-            'помидор, ломтик': 1*servings,
+            'хлеб, ломтик': 1,
+            'колбаса, ломтик': 1,
+            'сыр, ломтик': 1,
+            'помидор, ломтик': 1,
         },
-        # можете добавить свои рецепты ;)
+
     }
+
+    for item in recipes[dish_name]:
+        new_amount = recipes[dish_name][item] * servings
+        recipes[dish_name][item] = new_amount
 
     context = {'recipes': recipes[dish_name]}
 
