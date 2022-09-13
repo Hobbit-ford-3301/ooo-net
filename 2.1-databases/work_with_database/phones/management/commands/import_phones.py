@@ -15,13 +15,11 @@ class Command(BaseCommand):
             phones = list(csv.DictReader(file, delimiter=';'))
 
             for item in phones:
-                phone = Phone()
-                phone.id = item['id'],
-                phone.name = item['name'],
-                phone.price = item['price'],
-                phone.image = item['image'],
-                phone.release_date = item['release_date'],
-                phone.lte_exists = item['lte_exists'],
-                phone.slug = slugify(item['name'])
-
-
+                Phone.objects.create(
+                    id=item['id'],
+                    name=item['name'],
+                    price=item['price'],
+                    image=item['image'],
+                    release_date=item['release_date'],
+                    lte_exists=item['lte_exists'],
+                    slug=slugify(item['name']))

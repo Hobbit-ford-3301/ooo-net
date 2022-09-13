@@ -22,6 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', phones.views.index),
     path('catalog/', phones.views.show_catalog, name='catalog'),
-    path('show_phones/', phones.views.show_me_my_phones)
-    #path('catalog/<slug:slug>/', phones.views.show_product, name='phone'),
+    path('catalog/<slug:slug>/', phones.views.show_product, name='phone'),
 ]
